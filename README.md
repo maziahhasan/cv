@@ -15,7 +15,7 @@ A clean, responsive personal CV website built with only HTML and CSS.
 - CSS3 (Flexbox)
 
 ## Live Link
-[Deployed on Vercel](https://your-vercel-link.vercel.app) <!-- Replace with your actual link -->
+[Deployed on Vercel](https://cv-steel-tau.vercel.app/) <!-- Replace with your actual link -->
 
 ## Author
 - Name: Your Name
