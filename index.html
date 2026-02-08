@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Dark/Light Mode Toggle -->
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+    <!-- Header -->
+    <header class="header animate-fadein">
+        <img src="images/profile.jpg" alt="Profile Photo" class="profile-photo animate-pop">
+        <div class="header-main">
+            <h1>Maziah Hasan</h1>
+            <h2>Student</h2>
+        </div>
+        <a href="cv.pdf" class="download-cv" download>Download CV</a>
+    </header>
+    <!-- About Me -->
+    <section class="about">
+        <h3>About Me</h3>
+        <p>Motivated computer science student equipped with foundational programming knowledge and a keen interest in web and app development. Familiar with HTML, CSS, JavaScript, Flutter, Python and SQL through academic coursework and practical projects. Actively seeking an opportunity to enhance technical skills and contribute to innovative solutions in a team-oriented setting.</p>
+    </section>
+    <!-- Education -->
+    <section class="education">
+        <h3>Education</h3>
+        <ul>
+            <li><strong>FAST – NUCES | 2023 – Present</strong><br>Bachelor of Sciences in Computer Sciences<br>CGPA: 3.3</li>
+            <li><strong>Punjab Group of Colleges | 2021–2023</strong><br>FSC Pre – Engineering<br>Grade: A+</li>
+        </ul>
+    </section>
+    <!-- Skills -->
+    <section class="skills">
+        <h3>Skills</h3>
+        <ul>
+            <li><strong>Programming Languages:</strong> C/C++, Assembly Language, JavaScript, Flutter, Python / Flask</li>
+            <li><strong>Tools & Technologies:</strong> Git / Github, SQL / MySQL, VS Code / VS Studio, Linux</li>
+            <li><strong>Coursework:</strong> Data Structures, Object-Oriented Programming, Database Systems, Computer Networks, Operating Systems</li>
+        </ul>
+    </section>
+    <!-- Experience / Projects -->
+    <section class="experience">
+        <h3>Experience / Projects</h3>
+        <ul>
+            <li><strong>Sudoku</strong> – Built a fully functional Sudoku game in 4x4 & 6x6 grid with graphical display and a GUI for gameplay. Implemented user interaction, input validation, and number placement using top-level programming concepts.</li>
+            <li><strong>Cardify E-commerce Website</strong> – Developed a full-stack e-commerce platform with chatbot and email integration. Built responsive UI using React, Tailwind CSS, and HTML. Managed backend with Node.js, Express, and MongoDB. Designed and managed relational schemas in SQL Server for products, users, and transactions.</li>
+            <li><strong>College Grades Console App</strong> – Created a console app using stack and linked list for data storage and management. Enabled fast record searching and data export to file. Implemented sorting and game state logic.</li>
+        </ul>
+    </section>
+    <!-- Contact Information -->
+    <section class="contact">
+        <h3>Contact Information</h3>
+        <ul>
+            <li>Email: maziahhasan05@gmail.com</li>
+            <li>Phone: +92-305-4328203</li>
+            <li>Address: 19-A Ghalib Colony Samanabad, Lahore</li>
+        </ul>
+        <form id="contact-form" class="contact-form" autocomplete="off">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="3" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="form-msg" class="form-msg" role="status" aria-live="polite"></div>
+        <div class="portfolio-links">
+            <h4>Portfolio & Websites</h4>
+            <ul>
+                <li><a href="https://github.com/maziahhasan" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/maziah-hasan-bb6529209" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Maziah Hasan. All rights reserved.</p>
+        <span class="footer-mode">Dark/Light Mode Supported</span>
+    </footer>
+        <script>
+        // Dark/Light mode toggle
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Contact form handler: open mail client with prefilled message
+        (function() {
+            const contactForm = document.getElementById('contact-form');
+            const formMsg = document.getElementById('form-msg');
+            if (!contactForm) return;
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                if (!name || !email || !message) {
+                    formMsg.textContent = 'Please complete all fields.';
+                    formMsg.classList.add('error');
+                    return;
+                }
+                const subject = encodeURIComponent(`Contact from ${name} via CV website`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+                const mailto = `mailto:maziahhasan05@gmail.com?subject=${subject}&body=${body}`;
+                formMsg.textContent = 'Opening your email client...';
+                formMsg.classList.remove('error');
+                // Trigger mail client
+                window.location.href = mailto;
+                setTimeout(() => {
+                    formMsg.textContent = 'If your email client did not open, please copy the address and send manually.';
+                    contactForm.reset();
+                }, 1200);
+            });
+        })();
+        </script>
+</body>
+</html>
